@@ -20,18 +20,24 @@ showFortune();
 
 // PART 2: SHOW WEATHER
 
+function weatherInfo(result) {
+    console.log(result);
+    $('#weather-info').html(result[0]);
+}
+
 function showWeather(evt) {
     evt.preventDefault();
 
     var url = "/weather?zipcode=" + $("#zipcode-field").val();
+    console.log(url);
 
     // TODO: request weather with that URL and show the forecast in #weather-info
+    $.post('/weather.json',
+           url,
+           weatherInfo);
 }
 
 $("#weather-form").on('submit', showWeather);
-
-
-
 
 // PART 3: ORDER MELONS
 
